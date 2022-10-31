@@ -5,25 +5,21 @@
 # ->asennetaan pygame: pip install pygame
 # ->jos vs codessa näkyy vielä sahalaitaisena, käynnistä uudelleen
 import pygame 
-import sys
+from settings import Settings
 
 class SpaceInvaders:
     def __init__(self):
         # pygamen initialisointi pitää tehdä aina ensimmäisenä
-        pygame.init() 
+        pygame.init()         
+        # luodaan olio Settings-luokasta
+        self.settings = Settings()
         # asetetaan resoluutio (tämän faktoroimme myöhemmin)
-        self.screen = pygame.display.set_mode((1200,800))
+        self.screen = pygame.display.set_mode((self.settings.screen_width,self.settings.screen_height))
         # asetetaan yläpalkkiin pelin nimi
-        pygame.display.set_caption("Space Invaders")
-
+        pygame.display.set_caption(self.settings.caption)
+        
     def run(self):
-        # while True = kunnes ruutu suljetaan
-        while True: 
-            # vastaanotetaan näppäin- ja hiirikomentoja
-            for event in pygame.event.get(): 
-                # mikäli ikkuna suljetaan
-                if event.type == pygame.QUIT:
-                    sys.exit()
+        self.settings.check_keys()
 
 # ainoastaan, mikäli tätä tiedostoa yritetään ajaa:
 if __name__ == '__main__':
