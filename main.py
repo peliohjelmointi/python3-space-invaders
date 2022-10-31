@@ -21,8 +21,7 @@ class SpaceInvaders:
 
         self.ship = Ship(self) #ship-olio saa 
                             # käyttöönsä kaikki
-                            # olion muuttujat
-        
+                            # olion muuttujat 
     def run(self):
         # main loop
         while True: 
