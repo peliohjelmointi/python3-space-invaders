@@ -32,9 +32,11 @@ class Ship:
         self.x = float(self.rect.x) # 3 -> 3.0
 
     def fire_bullet(self):
-        new_bullet = Bullet(self, self.game)
-        self.bullets.add(new_bullet) 
-        #lisätään new_bullets bullets-spritegrouppiin
+        
+        if len(self.bullets) < self.settings.bullets_allowed:        
+            new_bullet = Bullet(self, self.game)
+            self.bullets.add(new_bullet)#lisätään new_bullets bullets-spritegrouppiin         
+        
 
     def update_bullets(self):
         self.bullets.update() #kutsuu kaikkien 
