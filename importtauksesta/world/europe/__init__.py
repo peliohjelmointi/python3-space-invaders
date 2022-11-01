@@ -1,0 +1,1 @@
+print("euroopan init kutsuttiin")

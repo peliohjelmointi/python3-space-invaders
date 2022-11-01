@@ -9,6 +9,7 @@ from settings import Settings
 from ship import Ship
 from events import Events
 
+
 class SpaceInvaders:
     def __init__(self):
         # pygamen initialisointi pitää tehdä aina ensimmäisenä
@@ -32,9 +33,13 @@ class SpaceInvaders:
             self.screen.blit(self.bg_image, self.screen.get_rect())
             #self.screen.fill((0,0,0),self.screen.get_rect())
             self.ship.blit()                        #piirretään alus ruudulle        
-            self.ship.update()                      # päivitetään päivittyneet kohdat
-           
-            pygame.display.flip()
+            self.ship.update() 
+            self.ship.update_bullets() #kutsuu jokaisen 
+                                        #bulletin update()-metodia                    
+            for b in self.ship.bullets:  #.sprites()
+                b.draw_bullet() #piirretään kukin bullet
+
+            pygame.display.flip()                 # päivitetään päivittyneet kohdat
 
 # ainoastaan, mikäli tätä tiedostoa yritetään ajaa:
 if __name__ == '__main__':
