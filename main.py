@@ -27,6 +27,7 @@ class SpaceInvaders:
         self.ship = Ship(self) 
         self.events = Events()
         self.aliens = pygame.sprite.Group()
+        self.explosions = pygame.sprite.Group()
         self.create_alien()
 
         self.txt_bullets_fired = Text(self.screen,0,0)
@@ -50,6 +51,8 @@ class SpaceInvaders:
             self.txt_bullets_fired.blit("BULLETS FIRED",self.stats.bullets_fired)
             self.txt_score.blit("SCORE",self.stats.score)
             self.aliens.update()
+            self.explosions.update()
+            self.explosions.draw(self.screen)
             self.ship.blit()                        #piirretään alus ruudulle        
             self.ship.update() 
             self.ship.update_bullets() #kutsuu jokaisen 

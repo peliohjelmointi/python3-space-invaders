@@ -1,5 +1,6 @@
 import pygame
 from bullet import Bullet
+from explosion import Explosion
 
 class Ship:
     def __init__(self,game):     
@@ -48,8 +49,12 @@ class Ship:
         # bulletin osuminen
         collision = pygame.sprite.groupcollide(self.bullets,self.game.aliens,True,True)
         if collision: # ==True
-            #print("osuma")
-            self.game.stats.score += 1
+            for aliens in collision.values(): #kaikki alienit mihin osuttiin
+                for alien in aliens:                    
+                    explosion = Explosion(self.game)
+                    explosion.set_explosion_center_and_object(alien.rect.center,'alien')
+                    self.game.explosions.add(explosion)
+                    self.game.stats.score += 1
             self.game.create_alien()
 
 

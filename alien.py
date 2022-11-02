@@ -20,11 +20,7 @@ class Alien(Sprite):
     def blit(self):
         self.screen.blit(self.image,self.rect)
 
-    def update(self):
-        # collision = pygame.sprite.groupcollide(self.,self.game.ship,True,True)
-        # if collision:
-        #     print("KDSFJKDSF")
-        
+    def update(self):        
         if self.direction==1 and self.rect.right <= self.screen_rect.right:        
             self.x += self.game.settings.alien_speed
         elif self.direction==-1 and self.rect.left >=self.screen_rect.left:            
