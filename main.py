@@ -10,6 +10,7 @@ from ship import Ship
 from events import Events
 from alien import Alien
 from UI import Text
+from stats import Stats
 
 class SpaceInvaders:
     def __init__(self):
@@ -26,11 +27,13 @@ class SpaceInvaders:
         self.ship = Ship(self) 
         self.events = Events()
         self.aliens = pygame.sprite.Group()
-
         self.create_alien()
-        self.alien_text = Text(self,0,0)
-        self.text2 = Text(self,500,500)
-        self.text3 = Text(self,700,400)
+
+        self.txt_bullets_fired = Text(self.screen,0,0)
+        self.txt_score = Text(self.screen,700,0)  #parempi olisi käyttää rect:in topright
+                #(tekstin rect:in topright = screen_rect.topright )
+
+        self.stats = Stats()
 
     def create_alien(self):
         alien = Alien(self)
@@ -38,19 +41,15 @@ class SpaceInvaders:
 
 
     def run(self): 
-        
         while True: # main loop
             self.events.check_keys(self.ship)       #täytetään ruutu sinisellä värillä        
             self.screen.blit(self.bg_image, self.screen.get_rect())
-            #self.screen.fill((0,0,0),self.screen.get_rect())
             self.aliens.draw(self.screen)
-            #self.alien.blit()
-            
+    
             #tekstit
-            self.alien_text.blit()
-            self.text2.blit()
-            self.text3.blit()
-
+            self.txt_bullets_fired.blit("BULLETS FIRED",self.stats.bullets_fired)
+            self.txt_score.blit("SCORE",self.stats.score)
+            self.aliens.update()
             self.ship.blit()                        #piirretään alus ruudulle        
             self.ship.update() 
             self.ship.update_bullets() #kutsuu jokaisen 

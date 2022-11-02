@@ -19,7 +19,7 @@ class Ship:
         #haetaan pääohjelmasta settings-olio
         self.settings = game.settings
 
-        #haetaan pääohjelma bulletille viemistä varten
+        #haetaan pääohjelma metodeille viemistä varten
         self.game = game
 
         self.bullets = pygame.sprite.Group()        
@@ -31,11 +31,11 @@ class Ship:
         #asetetaan desimaaliluku liikkumiselle
         self.x = float(self.rect.x) # 3 -> 3.0
 
-    def fire_bullet(self):
-        
+    def fire_bullet(self):        
         if len(self.bullets) < self.settings.bullets_allowed:        
             new_bullet = Bullet(self, self.game)
             self.bullets.add(new_bullet)#lisätään new_bullets bullets-spritegrouppiin         
+            self.game.stats.bullets_fired += 1      
         
 
     def update_bullets(self):
@@ -44,6 +44,14 @@ class Ship:
         for b in self.bullets.copy():
             if b.rect.bottom <= 0: #osuu yläreunaan
                 self.bullets.remove(b)
+
+        # bulletin osuminen
+        collision = pygame.sprite.groupcollide(self.bullets,self.game.aliens,True,True)
+        if collision: # ==True
+            #print("osuma")
+            self.game.stats.score += 1
+            self.game.create_alien()
+
 
     def blit(self): #blittaus on kuvien piirtämistä
         #piirretään kuva, 1.parametri on kuva, toinen on dimensio

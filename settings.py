@@ -1,19 +1,24 @@
+from dataclasses import dataclass #2017
+
+@dataclass
 class Settings:
-    def __init__(self):
     
         # screen settings
-        self.screen_width = 800
-        self.screen_height = 600
-        self.caption = "Space Invaders"
+        screen_width = 800
+        screen_height = 600
+        caption = "Space Invaders"
         #RGB (red, green, blue, 0-255 kunkin arvo)        
-        self.bg_color = (0,0,255)
+        bg_color = (0,0,255)
 
         # ship settings
-        self.ship_speed = 0.5
+        ship_speed = 0.5
 
         # bullet settings
-        self.bullet_width = 3
-        self.bullet_height = 15
-        self.bullet_color = (255,255,255)
-        self.bullet_speed = 0.5
-        self.bullets_allowed = 3
+        bullet_width = 3
+        bullet_height = 15
+        bullet_color = (255,255,255)
+        bullet_speed = 0.5
+        bullets_allowed = 3
+
+        # alien settings
+        alien_speed = 0.3
