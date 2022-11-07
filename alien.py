@@ -20,14 +20,15 @@ class Alien(Sprite):
     def blit(self):
         self.screen.blit(self.image,self.rect)
 
+    def check_edges(self):
+        if self.rect.right >= self.screen_rect.right or self.rect.left <=0:
+            return True
+
     def update(self):        
         if self.direction==1 and self.rect.right <= self.screen_rect.right:        
             self.x += self.game.settings.alien_speed
         elif self.direction==-1 and self.rect.left >=self.screen_rect.left:            
              self.x -= self.game.settings.alien_speed        
-        else:
-            self.direction= -self.direction #suunta muutetaan
-            self.rect.y += self.rect.height
 
         self.rect.x = self.x
 

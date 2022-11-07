@@ -1,5 +1,6 @@
 import pygame
 from pygame.sprite import Sprite
+import os.path
 
 class Explosion(Sprite):
     def __init__(self,game):
@@ -14,7 +15,8 @@ class Explosion(Sprite):
 
         for i in range(9): #0-8
             filename = f"regularExplosion0{i}.png"
-            image = pygame.image.load("images/"+filename).convert_alpha()
+            #image = pygame.image.load("images/"+filename).convert_alpha()
+            image = pygame.image.load(os.path.join("images",filename)).convert_alpha()
             scaled_image = pygame.transform.scale(image,(60,58))
             self.anim['alien'].append(scaled_image)
     

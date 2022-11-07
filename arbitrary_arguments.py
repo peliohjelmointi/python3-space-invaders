@@ -25,3 +25,23 @@ class Test:        #tuple    #dictionary
         pass
             
 
+def tulostaLuku(luku=10): #oletusparametri
+   print(luku) 
+
+tulostaLuku() #tulostaa 10, koska käyttää oletusparam.
+
+
+
+def tulosta(teksti="", luku=10):
+    print(teksti,luku)
+
+tulosta('KOTIIN KOHTA') #KOTIIN KOHTA 10
+tulosta(10)             # 10 10
+tulosta(10,5)          # 10 5
+tulosta()
+
+
+
+
+
+

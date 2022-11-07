@@ -9,7 +9,7 @@ class Text:
        self.x = x
        self.y = y
        
-    def blit(self,caption,value):
+    def blit(self,value,caption="PLACEHOLDER"):
         text_string= caption+ " "+ str(value)
         text = self.font.render(text_string,True,self.text_color)
         text_rect = text.get_rect()

@@ -55,7 +55,7 @@ class Ship:
                     explosion.set_explosion_center_and_object(alien.rect.center,'alien')
                     self.game.explosions.add(explosion)
                     self.game.stats.score += 1
-            self.game.create_alien()
+            #self.game.create_alien()
 
 
     def blit(self): #blittaus on kuvien piirtämistä
@@ -67,6 +67,9 @@ class Ship:
             self.x += self.settings.ship_speed           
         if self.moving_left and self.rect.left > 0: # self.screen_rect.left
             self.x -= self.settings.ship_speed
-        
+
+        if pygame.sprite.spritecollideany(self,self.game.aliens):
+            print("CRASH")
+
         #napataan talteen pelkkä kokonaisluku desimaaliluvusta
         self.rect.x = self.x
