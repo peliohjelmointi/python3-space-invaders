@@ -1,0 +1,2 @@
+Luo virtuaaliympäristö, aktivoi se, ja asenna requirements.txt -tiedostossa olevat moduulit.
+Käynnistä tämän jälkeen main.py -tiedostosta
